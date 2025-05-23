@@ -1,146 +1,141 @@
 import { useEffect, useState, useRef } from 'react';
 import Sidebar from './Sidebar';
 import { NavLink, Outlet, useNavigate, useNavigation } from 'react-router-dom';
+import '../css/mainLayout.css'; // CSS dosyasını ekledik
 
-export default function MainLayout() {
-  const navigation = useNavigation();
+const MainLayout = () => {
   const navigate = useNavigate();
-  const dropdownRef = useRef(null);  // Dropdown referansını oluşturduk
-
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem("user") || "null")
+  );
   const [dropdownOpen, setDropdownOpen] = useState(false);
-
-  useEffect(() => {
-    const userFromStorage = JSON.parse(localStorage.getItem("user"));
-    setUser(userFromStorage);
-  }, []);
+  const dropdownRef = useRef(null);
 
   const handleLogout = () => {
     localStorage.removeItem("user");
     setUser(null);
     setDropdownOpen(false);
-    navigate("/"); // Ana sayfaya yönlendiriyoruz
+    navigate("/login");
   };
 
-  // Dışarı tıklayınca dropdown kapanır
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target)
+      ) {
         setDropdownOpen(false);
       }
     };
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   return (
     <div id="main-layout">
-      <header className="container1">
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <h1>MainLayout</h1>
+      <div className="navbar">
+        <div className="nav-left">MainLayout</div>
 
-          {user && (
-            <div ref={dropdownRef} style={{ position: "relative" }}>
-              <div
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-                style={{ cursor: "pointer", padding: "8px", borderRadius: "5px", backgroundColor: "#f0f0f0" }}
-              >
-                👤 {user.username}
-              </div>
+        <div className="nav-center">
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? "nav-item active-link" : "nav-item"
+            }
+          >
+            Home
+          </NavLink>
+          <NavLink
+            to="/courses"
+            className={({ isActive }) =>
+              isActive ? "nav-item active-link" : "nav-item"
+            }
+          >
+            Courses
+          </NavLink>
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              isActive ? "nav-item active-link" : "nav-item"
+            }
+          >
+            About
+          </NavLink>
+          <NavLink
+            to="/todolist"
+            className={({ isActive }) =>
+              isActive ? "nav-item active-link" : "nav-item"
+            }
+          >
+           To Do List
+          </NavLink>
+          <NavLink
+            to="/helpLayout"
+            className={({ isActive }) =>
+              isActive ? "nav-item active-link" : "nav-item"
+            }
+          >
+           Help
+          </NavLink>
+        </div>
 
+        <div className="nav-right">
+          {user ? (
+            <div
+              ref={dropdownRef}
+              className="user-dropdown"
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+            >
+              👤 {user.username}
               {dropdownOpen && (
-                <div
-                  style={{
-                    position: "absolute",
-                    top: "100%",
-                    right: 0,
-                    backgroundColor: "white",
-                    border: "1px solid #ccc",
-                    borderRadius: "5px",
-                    boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
-                    zIndex: 1000,
-                    minWidth: "150px"
-                  }}
-                >
+                <div className="dropdown-content">
                   <button
                     onClick={() => {
                       setDropdownOpen(false);
-                      navigate("/profile"); // Profil sayfasına yönlendir
-                    }}
-                    style={{
-                      width: "100%",
-                      padding: "10px",
-                      background: "none",
-                      border: "none",
-                      textAlign: "left",
-                      cursor: "pointer"
+                      navigate("/profile");
                     }}
                   >
                     Profil
                   </button>
-                  <button
-                    onClick={handleLogout}
-                    style={{
-                      width: "100%",
-                      padding: "10px",
-                      background: "none",
-                      border: "none",
-                      textAlign: "left",
-                      cursor: "pointer",
-                      color: "red"
-                    }}
-                  >
-                    Çıkış Yap
-                  </button>
-
-                  {/* Admin linkini sadece admin için gösteriyoruz */}
                   {user?.role === "admin" && (
                     <button
                       onClick={() => {
                         setDropdownOpen(false);
-                        navigate("/admin"); // Admin sayfasına yönlendir
-                      }}
-                      style={{
-                        width: "100%",
-                        padding: "10px",
-                        background: "none",
-                        border: "none",
-                        textAlign: "left",
-                        cursor: "pointer"
+                        navigate("/admin");
                       }}
                     >
                       Admin Paneli
                     </button>
                   )}
+                  <button onClick={handleLogout}>Çıkış Yap</button>
                 </div>
               )}
             </div>
+          ) : (
+            <>
+              <button
+                className="join-btn"
+                onClick={() => navigate("/register")}
+              >
+                Join
+              </button>
+              <button
+                className="login-btn"
+                onClick={() => navigate("/login")}
+              >
+                Log In
+              </button>
+            </>
           )}
         </div>
+      </div>
 
-        <nav>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/about">About</NavLink>
-          <NavLink to="/courses">Courses</NavLink>
-          <NavLink to="/HelpLayout">Help</NavLink>
-          <NavLink to="/todolist">Yapılacaklar</NavLink>
-          {!user && <NavLink to="/AuthPage">User</NavLink>}
-          {/* Admin Linkini burada göstermiyoruz, dropdown içinde olacak */}
-        </nav>
-      </header>
-
-      <main className="container">
-        <Sidebar />
-        {navigation.state === "loading" && (
-          <h1 style={{ fontSize: "Larger" }}>Loading...</h1>
-        )}
+      <div className="container">
         <Outlet />
-        <footer>
-          <p style={{ textAlign: "center" }}>
-            copyright &copy; 2023 <br />
-          </p>
-        </footer>
-      </main>
+      </div>
     </div>
   );
-}
+};
+
+export default MainLayout;

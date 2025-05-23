@@ -1,0 +1,245 @@
+/* CSS: homepage.css */
+.hero {
+  position: relative;
+  height: 100vh;
+ 
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+.clouds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%; /* Eskiden 300%'dü, çok büyüktü */
+  background: url('../pages/images/bulut.png') repeat-x;
+  background-size: 100px auto; /* Bulutun genişliğini 300px yap, isteğe göre azalt/arttır */
+  opacity: 0.2; /* Daha şeffaf görünür */
+  animation: cloudsAnimation 3600s linear infinite;
+  z-index: 0;
+}
+
+@keyframes cloudsAnimation {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 2rem;
+  color: white;
+}
+
+.hero .text {
+  flex: 1;
+  padding-right: 2rem;
+}
+
+.hero .image {
+  flex: 1;
+  text-align: center;
+}
+
+.hero .image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.cta-button {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  background: #ff5252;
+  transform: translateY(-2px);
+}
+
+.features {
+  padding: 4rem 0;
+  background: white;
+  margin: 0;
+}
+
+.features h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.divider {
+  width: 80px;
+  height: 3px;
+  background: #6e8efb;
+  margin: 0 auto 2rem;
+}
+
+.feature-cards {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.feature-card {
+  flex: 1;
+  min-width: 250px;
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.feature-card h3 {
+  color: #6e8efb;
+  margin-bottom: 1rem;
+}
+
+.featured-courses {
+  padding: 4rem 0;
+  background: white;
+  margin: 0;
+}
+
+.featured-courses h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.course-list {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.course-item {
+  padding: 1.5rem 2rem;
+  background: #f8f9fa;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.course-item:hover {
+  background: #6e8efb;
+  color: white;
+  transform: translateY(-5px);
+}
+
+.footer {
+  text-align: center;
+  padding: 2rem 0;
+  background: #919999;
+  color: white;
+  margin: 0;
+}
+/* Bulutların genel katmanı */
+.clouds-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Tüm bulutlara genel stil */
+.cloud {
+  position: absolute;
+  opacity: 0.25;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* Soldan sağa gelen bulutlar */
+.cloud-1 {
+  top: 10%;
+  left: -250px;
+  width: 180px;
+  animation: floatCloudsRight 100s;
+}
+.cloud-2 {
+  top: 40%;
+  left: -300px;
+  width: 130px;
+  animation: floatCloudsRight 130s;
+}
+.cloud-3 {
+  top: 60%;
+  left: -200px;
+  width: 120px;
+  animation: floatCloudsRight 110s;
+}
+
+/* Sağdan sola gelen bulutlar */
+.cloud-4 {
+  top: 20%;
+  right: -220px;
+  width: 150px;
+  animation: floatCloudsLeft 140s;
+}
+.cloud-5 {
+  top: 50%;
+  right: -250px;
+  width: 170px;
+  animation: floatCloudsLeft 140s;
+}
+
+/* Soldan sağa kayan animasyon */
+@keyframes floatCloudsRight {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(220vw); }
+}
+
+/* Sağdan sola kayan animasyon */
+@keyframes floatCloudsLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-220vw); }
+}
+.features {
+  padding: 80px 20px;
+  background-color: #f9f9f9;
+}
+
+.feature-cards {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.feature-card {
+  background-color: white;
+  border-radius: 20px;
+  padding: 30px;
+  width: 280px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.feature-card:hover {
+  transform: scale(1.05);
+  background-color: #f0f4ff;
+ 
+}

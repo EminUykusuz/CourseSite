@@ -1,5 +1,5 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import React from 'react';
+import { createBrowserRouter, RouterProvider ,useRouteError} from 'react-router-dom';
+
 import './App.css';
 
 // Layoutlar
@@ -13,15 +13,14 @@ import AboutPage from './pages/about';
 import Courses, { CoursesLoader } from './pages/courses';
 import ContactPage from './pages/ContactPage';
 import FaqPage from './pages/Faq';
-import CourseDetailPage, { CourseDetailsLoader } from './pages/courseDetailPage';
+import CourseDetailPagee, { CourseDetailsLoader } from './pages/courseDetailPage2';
 import Todolist from './todolist';
-import CourseCreatePage from './pages/courseCreate';
-import CourseEditPage from './pages/courseEdit';
-import CourseFormPage from './pages/courseForm';
 import AuthPage from './pages/LogReg';
 import CreateAccountPage from './pages/createaccountPage';
 import AdminPage from './pages/admin';
 import NotAuthorized from './pages/NotAuthorized';
+import CourseList from './pages/CourseList';
+import CourseCreate from './pages/CourseCreate';
 
 // Korumalı rota bileşeni
 import ProtectedRoute from './Components/ProtectedRoute';
@@ -40,24 +39,30 @@ const router = createBrowserRouter([
         loader: CoursesLoader,
         element: <CourseLayout />,
         children: [
-          { index: true, element: <Courses /> },
-          { path: 'create', element: <CourseCreatePage /> },
-          { path: ':courseId/edit', element: <CourseEditPage /> },
-          { path: 'form', element: <CourseFormPage /> },
+          { index: true, element: <CourseList /> },
+          { path: ':courseId', element: <CourseDetailPagee />, loader: CourseDetailsLoader },
+       
         ]
       },
-      { path: 'courses/:courseId', element: <CourseDetailPage />, loader: CourseDetailsLoader },
+      {path:'login',element:<AuthPage />},
       { path: 'todolist', element: <Todolist /> },
       { path: 'Account', element: <CreateAccountPage /> },
       { path: 'AuthPage', element: <AuthPage /> },
+      {path:"/courses/:id", element:<CourseDetailPagee />},
+      // Admin paneli ve kurs oluşturma alanları
       {
         path: 'admin',
         element: (
           <ProtectedRoute>
             <AdminPage />
           </ProtectedRoute>
-        )
+        ),
+        children: [
+          { path: 'courses', element: <CourseList /> },
+          { path: 'courses/create', element: <CourseCreate /> }
+        ]
       },
+
       {
         path: 'HelpLayout',
         element: <HelpLayout />,
@@ -73,6 +78,8 @@ const router = createBrowserRouter([
     ]
   }
 ]);
+
+
 
 function App() {
   return <RouterProvider router={router} />;

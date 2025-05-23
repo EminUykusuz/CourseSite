@@ -1,0 +1,132 @@
+:root {
+  --primary: #1e88e5;
+  --primary-dark: #1565c0;
+  --bg: #f4f6f8;
+  --text: #2e3a59;
+  --light: #ffffff;
+  --border: #e0e0e0;
+  --accent: #dbeafe;
+}
+
+#help-layout {
+  max-width: 1060px;
+  border-radius: 10px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+  background-color: var(--bg);
+}
+
+/* HEADER */
+.help-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+ 
+}
+
+.help-header h1 {
+  font-size: 2.8rem;
+  
+  margin-bottom: 0.3rem;
+}
+
+.help-subtitle {
+  font-size: 1.2rem;
+  color: #5f6b7a;
+}
+
+/* NAVIGATION */
+.help-nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+}
+
+.help-nav a {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--primary);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.help-nav a:hover {
+  background-color: var(--accent);
+  color: var(--primary-dark);
+}
+
+.help-nav a.active {
+  background-color: var(--primary);
+  color: white;
+}
+
+.help-details ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin-top: 1.5rem;
+}
+
+.help-details li {
+  background-color: #f0f4ff;
+  border: 1px solid #d0e2ff;
+  border-radius: 10px;
+  padding: 1rem;
+  color: #1e3a8a;
+  font-weight: 500;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 8px rgba(30, 58, 138, 0.05);
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.help-details li:hover {
+  background-color: #e0ecff;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(30, 58, 138, 0.1);
+}
+
+
+/* FOOTER */
+.help-footer {
+  text-align: center;
+  margin-top: 20px;
+  background-color: var(--light);
+  padding: 1.5rem;
+  border-radius: 10px;
+  color: #4a5568;
+  font-size: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+  .help-nav ul {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  #help-layout {
+    padding: 1.2rem;
+  }
+
+  .help-header h1 {
+    font-size: 2rem;
+  }
+
+  .help-details {
+    padding: 1.5rem;
+  }
+}

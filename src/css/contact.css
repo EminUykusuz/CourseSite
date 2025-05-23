@@ -1,0 +1,111 @@
+#contact {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #ffffff;
+  color: #2d3748;
+}
+
+#contact h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #1a202c;
+}
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* İletişim Bilgileri */
+.contact-list {
+  list-style: none;
+  padding: 0;
+  font-size: 1rem;
+  flex: 1 1 250px;
+  background-color: #f9f9f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.contact-list li {
+  margin-bottom: 1rem;
+}
+
+.contact-list p {
+  margin: 0;
+  font-size: 1rem;
+  color: #4a5568;
+}
+
+/* Form */
+.contact-form {
+  flex: 1 1 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  background-color: #fdfdfd;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.contact-form label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
+  color: #2d3748;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #3182ce;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.3);
+}
+
+.contact-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.contact-form button {
+  background-color: #3182ce;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: flex-start;
+}
+
+.contact-form button:hover {
+  background-color: #2b6cb0;
+}
+
+/* Mobil uyumluluk */
+@media (max-width: 768px) {
+  .contact-container {
+    flex-direction: column;
+  }
+}

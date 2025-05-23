@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import "../css/userlist.css"; // En üstte import et
 import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
 
 
@@ -60,12 +60,8 @@ export default function UserList() {
 
 
   return (
-
-    
- 
-    <div style={{ width:"950px"  }}>
-    {/* Sol Kolon: Grafik */}
-    <div >
+  <div className="userlist-wrapper">
+    <div className="section-card">
       <h2>Kullanıcı Rolleri - Pasta Grafiği</h2>
       <PieChart width={400} height={300}>
         <Pie
@@ -88,26 +84,25 @@ export default function UserList() {
         <Legend />
       </PieChart>
     </div>
-  
-    {/* Sağ Kolon: Kullanıcı Listesi */}
-    <div >
+
+    <div className="section-card">
       <h2>Tüm Kullanıcılar</h2>
-      <table style={{ width: "100%", marginLeft:"-15px" }}>
+      <table className="userlist-table">
         <thead>
           <tr>
-            <th style={thStyle}>Kullanıcı Adı</th>
-            <th style={thStyle}>E-posta</th>
-            <th style={thStyle}>Rol</th>
-            <th style={thStyle}>Rol Güncelle</th>
+            <th>Kullanıcı Adı</th>
+            <th>E-posta</th>
+            <th>Rol</th>
+            <th>Rol Güncelle</th>
           </tr>
         </thead>
         <tbody>
           {users.map(user => (
             <tr key={user.id}>
-              <td style={tdStyle}>{user.username}</td>
-              <td style={tdStyle}>{user.email}</td>
-              <td style={tdStyle}>{user.role}</td>
-              <td style={tdStyle}>
+              <td>{user.username}</td>
+              <td>{user.email}</td>
+              <td>{user.role}</td>
+              <td>
                 <select
                   value={user.role}
                   onChange={(e) => handleRoleChange(user.id, e.target.value)}
@@ -123,6 +118,5 @@ export default function UserList() {
       </table>
     </div>
   </div>
-    
-  );
+);
 }

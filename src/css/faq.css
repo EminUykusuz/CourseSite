@@ -1,0 +1,76 @@
+/* Ana sayfa container */
+#faq-page {
+    
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  color: #333;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #ffffff;
+  margin-top: 30px;
+  border-radius: 10px;
+}
+
+/* Başlık */
+.faq-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #1a202c;
+}
+
+/* Accordion kartları */
+.accordion-item {
+  background-color: #f9f9f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.accordion-item.open {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transform: translateY(-2px);
+}
+
+/* Soru kısmı */
+.accordion-question {
+  padding: 16px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  color: #2d3748;
+  background-color: #edf2f7;
+  transition: background-color 0.3s ease;
+}
+
+.accordion-question:hover {
+  background-color: #e2e8f0;
+}
+
+/* İkon */
+.accordion-icon {
+  font-size: 1rem;
+  color: #4a5568;
+  transition: transform 0.3s ease;
+}
+
+/* Cevap kısmı */
+.accordion-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  background-color: #ffffff;
+}
+
+.accordion-answer p {
+  padding: 12px 20px;
+  margin: 0;
+  font-size: 0.95rem;
+  color: #4a5568;
+  line-height: 1.6;
+}

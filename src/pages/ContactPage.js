@@ -1,3 +1,4 @@
+import "../css/contact.css";
 export default function ContactPage() {
     return (
         <>

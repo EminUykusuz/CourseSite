@@ -1,39 +1,48 @@
-import {Outlet} from "react-router-dom"; // Outlet, alt bileşenlerin yerleştirileceği yerdir
-import {NavLink,} from "react-router-dom"; // Link, sayfalar arasında geçiş yapmak için kullanılır
-import ContactPage from "../pages/ContactPage";
+import { Outlet, NavLink } from "react-router-dom";
+import "../css/helpLayout.css"; // CSS dosyasını ayrıca tanımlarsan güzel olur
+
 export default function HelpLayout() {
-    return(
-        <div id ="help-layout">
-            <h1>Help </h1>
-    <ul style={{listStyleType: "none" }}>
-        <li><p style={{font:"19px", }}>Yardım</p></li>
-        <li><p>Yardım Saçlarımı Seviyorum</p></li>
-        <li><p>Yardım sayfasına hoş geldiniz. Burada size yardımcı olacağız.</p></li>
-        <li> <p>Herhangi bir sorunuz varsa, lütfen bizimle iletişime geçin.</p></li>
-            
-            <nav>
-            <h3>
-            <NavLink to="contact">Contact</NavLink>
+  return (
+  
+    <div id="help-layout">
+      <header className="help-header">
+        <h1>Yardım Merkezi</h1>
+        <p className="help-subtitle">
+          Sorun mu yaşıyorsun? Merak etme, buradayız.
+        </p>
+      </header>
 
-            </h3>   
-            <h3>
-            <NavLink to="Faq" >Sorular</NavLink>
-            </h3> 
-            </nav>
-           
-            </ul><footer>
-            
-           {/* // <ContactPage></ContactPage>  böylede bir gösterme şeklide vardır ama app.jsden yapılan kısım daha geçerli ve toplu durmasını sağlar. */}
-            
-            
-            </footer>
-            
+      <nav className="help-nav">
+        <ul>
+          <li>
+            <NavLink to="contact">📬 Bize Ulaşın</NavLink>
+          </li>
+          <li>
+            <NavLink to="faq">❓ Sıkça Sorulanlar</NavLink>
+          </li>
+        </ul>
+      </nav>
 
-            
-            
+      <section className="help-details">
+        <h2>Destek Konuları</h2>
+        <ul>
+          <li>🔧 Hesap ayarlarıyla ilgili yardım</li>
+          <li>🔐 Şifre sıfırlama ve güvenlik</li>
+          <li>💳 Ödeme sorunları ve fatura işlemleri</li>
+          <li>📱 Mobil cihazlarla ilgili sorunlar</li>
+          <li>🧾 Hizmet kullanım koşulları</li>
+          <li>📦 Sipariş, teslimat ve iade süreçleri</li>
+        </ul>
+      </section>
 
-            <Outlet/> {/* Outlet, alt bileşenlerin yerleştirileceği yerdir */}
-        
-        </div>
-    );
+      <footer className="help-footer">
+        <p>
+          Daha fazla yardıma mı ihtiyacın var? İletişim sayfasını ziyaret et, biz senin için buradayız.
+        </p>
+      </footer>
+
+      <Outlet />
+    </div>
+  );
+
 }

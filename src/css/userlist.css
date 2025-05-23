@@ -1,0 +1,97 @@
+/* Ana kapsayıcı */
+.userlist-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 3rem 2rem;
+  max-width: 1200px;
+  margin: auto;
+  font-family: "Inter", sans-serif;
+  color: #2c3e50;
+}
+
+/* Başlıklar */
+.userlist-wrapper h2 {
+  font-size: 1.8rem;
+  background: linear-gradient(90deg, #007cf0, #00dfd8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+/* Kart tipi kutular */
+.section-card {
+  
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease-in-out;
+}
+
+.section-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Tablo */
+.userlist-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.userlist-table th,
+.userlist-table td {
+  padding: 14px 18px;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: left;
+}
+
+.userlist-table th {
+  
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.userlist-table tbody tr:hover {
+  background-color: #f1f5f9;
+  transition: background-color 0.2s ease;
+}
+
+/* Dropdown */
+.userlist-table select {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e0;
+  
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.userlist-table select:focus {
+  outline: none;
+  border-color: #007cf0;
+  box-shadow: 0 0 0 2px rgba(0, 124, 240, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .userlist-wrapper {
+    padding: 1.5rem;
+  }
+
+  .userlist-table {
+    font-size: 0.85rem;
+  }
+
+  .userlist-table th,
+  .userlist-table td {
+    padding: 10px 12px;
+  }
+
+  .userlist-wrapper h2 {
+    font-size: 1.4rem;
+  }
+}
