@@ -81,7 +81,7 @@ export default function CourseCreate() {
         </div>
         
         <div className="form-group">
-          <label htmlFor="courseImage" className="form-label">Kurs Görseli</label>
+          <label htmlFor="courseImage" className="form-label">Kurs Logosu</label>
           <input
             id="courseImage"
             type="file"
